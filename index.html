@@ -310,12 +310,119 @@
   }
   .footer-links a:hover{ color: var(--ink); }
 
+  /* Screenshot gallery */
+  .gallery{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 8px;
+  }
+  .gallery-item{
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .gallery-frame{
+    position: relative;
+    border-radius: 20px;
+    background: white;
+    padding: 8px;
+    box-shadow:
+      0 1px 3px rgba(20,40,34,0.07),
+      0 10px 24px -10px rgba(20,40,34,0.22),
+      0 0 0 1px rgba(20,40,34,0.05);
+    transform: rotate(var(--tilt)) translateY(0);
+    transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease;
+    will-change: transform;
+  }
+  .gallery-item:nth-child(1) .gallery-frame{ --tilt: -3deg; }
+  .gallery-item:nth-child(2) .gallery-frame{ --tilt: 2.2deg; }
+  .gallery-item:nth-child(3) .gallery-frame{ --tilt: -1.6deg; }
+  .gallery-item:nth-child(4) .gallery-frame{ --tilt: 2.8deg; }
+  .gallery-item:hover .gallery-frame,
+  .gallery-item:focus-visible .gallery-frame{
+    transform: rotate(0deg) translateY(-8px);
+    box-shadow:
+      0 2px 6px rgba(20,40,34,0.09),
+      0 24px 44px -14px rgba(20,40,34,0.32),
+      0 0 0 1px rgba(14,110,98,0.12);
+  }
+  .gallery-frame img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 13px;
+  }
+  .gallery-caption{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 0 4px;
+  }
+  .gallery-caption .label{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .gallery-caption .tag{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    white-space: nowrap;
+  }
+
+  /* Lightbox */
+  .lightbox{
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    background: rgba(10,20,17,0.72);
+    backdrop-filter: blur(3px);
+  }
+  .lightbox.open{ display: flex; }
+  .lightbox img{
+    max-width: min(420px, 90vw);
+    max-height: 84vh;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px -16px rgba(0,0,0,0.5);
+    animation: settle .3s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .lightbox-close{
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(246,242,233,0.12);
+    color: var(--paper);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .lightbox-close:hover{ background: rgba(246,242,233,0.22); }
+
   @media (max-width: 720px){
     .hero{ grid-template-columns: 1fr; padding: 48px 0 56px; }
     .banner-panel{ order: -1; }
     .steps{ grid-template-columns: 1fr; }
+    .gallery{ grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
     .privacy{ grid-template-columns: 1fr; padding: 40px 26px; border-radius: 18px; }
     .banner-shot{ max-width: 340px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .gallery-frame{ transition: none; }
   }
 </style>
 </head>
@@ -330,6 +437,7 @@
       </a>
       <div class="nav-links">
         <a href="#funktion">So funktioniert's</a>
+        <a href="#einblick">Einblick</a>
         <a href="#privatsphaere">Privatsphäre</a>
         <a href="mailto:uebrig.support@icloud.com">Kontakt</a>
       </div>
@@ -385,6 +493,39 @@
     </div>
   </section>
 
+  <section id="einblick">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Einblick</span>
+        <h2>So sieht's auf deinem iPhone aus.</h2>
+        <p>Vier Screens, ein ruhiger Blick auf dein Geld. Zum Vergrößern antippen.</p>
+      </div>
+      <div class="gallery">
+        <a class="gallery-item" href="screen-budget.PNG" data-caption="Budget" aria-label="Screenshot Budget vergrößern">
+          <span class="gallery-frame"><img src="screen-budget.PNG" alt="übrig Screenshot: Budget-Übersicht mit Kategorien und Fortschrittsbalken"></span>
+          <span class="gallery-caption"><span class="label">Budget</span><span class="tag">nach Kategorie</span></span>
+        </a>
+        <a class="gallery-item" href="screen-fixbetraege.PNG" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge vergrößern">
+          <span class="gallery-frame"><img src="screen-fixbetraege.PNG" alt="übrig Screenshot: Wiederkehrende Fixbeträge im Überblick"></span>
+          <span class="gallery-caption"><span class="label">Fixbeträge</span><span class="tag">wiederkehrend</span></span>
+        </a>
+        <a class="gallery-item" href="screen-uebersicht.PNG" data-caption="Übersicht" aria-label="Screenshot Übersicht vergrößern">
+          <span class="gallery-frame"><img src="screen-uebersicht.PNG" alt="übrig Screenshot: Monatsübersicht mit verbleibendem Budget"></span>
+          <span class="gallery-caption"><span class="label">Übersicht</span><span class="tag">der Monat</span></span>
+        </a>
+        <a class="gallery-item" href="screen-vermoegen.PNG" data-caption="Vermögen" aria-label="Screenshot Vermögen vergrößern">
+          <span class="gallery-frame"><img src="screen-vermoegen.PNG" alt="übrig Screenshot: Vermögensverlauf über die Zeit"></span>
+          <span class="gallery-caption"><span class="label">Vermögen</span><span class="tag">im Verlauf</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Schließen">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
   <section id="privatsphaere">
     <div class="wrap">
       <div class="privacy">
@@ -431,6 +572,42 @@
     </div>
   </div>
 </footer>
+
+<script>
+  (function(){
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightboxImg');
+    var closeBtn = document.getElementById('lightboxClose');
+    var items = document.querySelectorAll('.gallery-item');
+
+    function open(src, alt){
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lb.classList.add('open');
+      closeBtn.focus();
+    }
+    function close(){
+      lb.classList.remove('open');
+      lbImg.src = '';
+    }
+
+    items.forEach(function(item){
+      item.addEventListener('click', function(e){
+        e.preventDefault();
+        var img = item.querySelector('img');
+        open(item.getAttribute('href'), img.alt);
+      });
+    });
+
+    closeBtn.addEventListener('click', close);
+    lb.addEventListener('click', function(e){
+      if(e.target === lb) close();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') close();
+    });
+  })();
+</script>
 
 </body>
 </html>
