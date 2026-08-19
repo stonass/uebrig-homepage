@@ -427,6 +427,19 @@
   }
   .lightbox-close:hover{ background: rgba(246,242,233,0.22); }
 
+  @media (max-width: 640px){
+    .nav{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .nav-links{
+      flex-wrap: wrap;
+      gap: 14px 20px;
+      font-size: 13px;
+    }
+  }
+
   @media (max-width: 720px){
     .hero{ grid-template-columns: 1fr; padding: 48px 0 56px; }
     .banner-panel{ order: -1; }
@@ -521,20 +534,20 @@
         <p>Vier Screens, ein ruhiger Blick auf dein Geld. Zum Vergrößern antippen.</p>
       </div>
       <div class="gallery">
-        <a class="gallery-item" href="screen-uebersicht.PNG" data-caption="Übersicht" aria-label="Screenshot Übersicht vergrößern">
-          <span class="gallery-frame"><img src="screen-uebersicht.PNG" alt="übrig Screenshot: Monatsübersicht mit verbleibendem Budget"></span>
+        <a class="gallery-item" href="screen-uebersicht.PNG?v=2" data-caption="Übersicht" aria-label="Screenshot Übersicht vergrößern">
+          <span class="gallery-frame"><img src="screen-uebersicht.PNG?v=2" alt="übrig Screenshot: Monatsübersicht mit verbleibendem Budget"></span>
           <span class="gallery-caption"><span class="label">Übersicht</span><span class="tag">der Monat</span></span>
         </a>
-        <a class="gallery-item" href="screen-budget.PNG" data-caption="Budget" aria-label="Screenshot Budget vergrößern">
-          <span class="gallery-frame"><img src="screen-budget.PNG" alt="übrig Screenshot: Budget-Übersicht mit Kategorien und Fortschrittsbalken"></span>
+        <a class="gallery-item" href="screen-budget.PNG?v=2" data-caption="Budget" aria-label="Screenshot Budget vergrößern">
+          <span class="gallery-frame"><img src="screen-budget.PNG?v=2" alt="übrig Screenshot: Budget-Übersicht mit Kategorien und Fortschrittsbalken"></span>
           <span class="gallery-caption"><span class="label">Budget</span><span class="tag">nach Kategorie</span></span>
         </a>
-        <a class="gallery-item" href="screen-fixbetraege.PNG" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge vergrößern">
-          <span class="gallery-frame"><img src="screen-fixbetraege.PNG" alt="übrig Screenshot: Wiederkehrende Fixbeträge im Überblick"></span>
+        <a class="gallery-item" href="screen-fixbetraege.PNG?v=2" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge vergrößern">
+          <span class="gallery-frame"><img src="screen-fixbetraege.PNG?v=2" alt="übrig Screenshot: Wiederkehrende Fixbeträge im Überblick"></span>
           <span class="gallery-caption"><span class="label">Fixbeträge</span><span class="tag">wiederkehrend</span></span>
         </a>
-        <a class="gallery-item" href="screen-vermoegen.PNG" data-caption="Vermögen" aria-label="Screenshot Vermögen vergrößern">
-          <span class="gallery-frame"><img src="screen-vermoegen.PNG" alt="übrig Screenshot: Vermögensverlauf über die Zeit"></span>
+        <a class="gallery-item" href="screen-vermoegen.PNG?v=2" data-caption="Vermögen" aria-label="Screenshot Vermögen vergrößern">
+          <span class="gallery-frame"><img src="screen-vermoegen.PNG?v=2" alt="übrig Screenshot: Vermögensverlauf über die Zeit"></span>
           <span class="gallery-caption"><span class="label">Vermögen</span><span class="tag">im Verlauf</span></span>
         </a>
       </div>
