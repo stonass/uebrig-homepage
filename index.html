@@ -327,7 +327,6 @@
     overflow: hidden;
     border-radius: 20px;
     background: white;
-    padding: 8px;
     box-shadow:
       0 1px 3px rgba(20,40,34,0.07),
       0 10px 24px -10px rgba(20,40,34,0.22),
@@ -351,10 +350,8 @@
   .gallery-frame img{
     display: block;
     width: 100%;
-    aspect-ratio: 9 / 17.5;
-    object-fit: cover;
-    object-position: center 8%;
-    border-radius: 13px;
+    height: auto;
+    border-radius: 20px;
   }
   .gallery-caption{
     display: flex;
@@ -504,113 +501,4 @@
         <p>Vier Screens, ein ruhiger Blick auf dein Geld. Zum Vergrößern antippen.</p>
       </div>
       <div class="gallery">
-        <a class="gallery-item" href="screen-budget.PNG" data-caption="Budget" aria-label="Screenshot Budget vergrößern">
-          <span class="gallery-frame"><img src="screen-budget.PNG" alt="übrig Screenshot: Budget-Übersicht mit Kategorien und Fortschrittsbalken"></span>
-          <span class="gallery-caption"><span class="label">Budget</span><span class="tag">nach Kategorie</span></span>
-        </a>
-        <a class="gallery-item" href="screen-fixbetraege.PNG" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge vergrößern">
-          <span class="gallery-frame"><img src="screen-fixbetraege.PNG" alt="übrig Screenshot: Wiederkehrende Fixbeträge im Überblick"></span>
-          <span class="gallery-caption"><span class="label">Fixbeträge</span><span class="tag">wiederkehrend</span></span>
-        </a>
-        <a class="gallery-item" href="screen-uebersicht.PNG" data-caption="Übersicht" aria-label="Screenshot Übersicht vergrößern">
-          <span class="gallery-frame"><img src="screen-uebersicht.PNG" alt="übrig Screenshot: Monatsübersicht mit verbleibendem Budget"></span>
-          <span class="gallery-caption"><span class="label">Übersicht</span><span class="tag">der Monat</span></span>
-        </a>
-        <a class="gallery-item" href="screen-vermoegen.PNG" data-caption="Vermögen" aria-label="Screenshot Vermögen vergrößern">
-          <span class="gallery-frame"><img src="screen-vermoegen.PNG" alt="übrig Screenshot: Vermögensverlauf über die Zeit"></span>
-          <span class="gallery-caption"><span class="label">Vermögen</span><span class="tag">im Verlauf</span></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Schließen">&times;</button>
-    <img id="lightboxImg" src="" alt="">
-  </div>
-
-  <section id="privatsphaere">
-    <div class="wrap">
-      <div class="privacy">
-        <div>
-          <span class="eyebrow" style="background: rgba(63,183,158,0.16); color: var(--teal-bright);">Privatsphäre</span>
-          <h2>Deine Daten gehören nur dir.</h2>
-          <p>Kein Tracking, keine fremden Server. Wenn du iCloud nutzt, landen deine Daten in deiner eigenen Apple-ID – nie auf externen Servern Dritter. Ohne iCloud-Account bleiben alle Daten lokal auf dem Gerät.</p>
-        </div>
-        <ul class="privacy-list">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4 10-10"/></svg>
-            Daten nur in deiner eigenen iCloud oder lokal – kein externer Server
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4 10-10"/></svg>
-            Keine Analyse-, Tracking- oder Werbedienste
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4 10-10"/></svg>
-            Keine Verbindung zu deiner Bank oder deinem Online-Banking
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4 10-10"/></svg>
-            <span>Details in der <a href="https://stonass.github.io/uebrig-datenschutz/">Datenschutzerklärung</a></span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap footer-row">
-    <div>
-      <a class="wordmark" href="#top">
-        <span class="name">übrig<span>.</span></span>
-        <span class="tagline">Monat im Griff</span>
-      </a>
-      <p class="fine-print" style="margin-top: 8px;">Entwickelt von Ralf Adelstein</p>
-    </div>
-    <div class="footer-links">
-      <a href="https://stonass.github.io/uebrig-datenschutz/">Datenschutzerklärung</a>
-      <a href="mailto:uebrig.support@icloud.com">Support-Kontakt</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  (function(){
-    var lb = document.getElementById('lightbox');
-    var lbImg = document.getElementById('lightboxImg');
-    var closeBtn = document.getElementById('lightboxClose');
-    var items = document.querySelectorAll('.gallery-item');
-
-    function open(src, alt){
-      lbImg.src = src;
-      lbImg.alt = alt;
-      lb.classList.add('open');
-      closeBtn.focus();
-    }
-    function close(){
-      lb.classList.remove('open');
-      lbImg.src = '';
-    }
-
-    items.forEach(function(item){
-      item.addEventListener('click', function(e){
-        e.preventDefault();
-        var img = item.querySelector('img');
-        open(item.getAttribute('href'), img.alt);
-      });
-    });
-
-    closeBtn.addEventListener('click', close);
-    lb.addEventListener('click', function(e){
-      if(e.target === lb) close();
-    });
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape') close();
-    });
-  })();
-</script>
-
-</body>
-</html>
+        <a
