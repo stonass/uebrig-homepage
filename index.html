@@ -96,6 +96,12 @@
   .nav-links a:hover{ color: var(--ink); border-color: var(--teal-bright); }
 
   /* Hero */
+  .hero > div{
+    margin-left: 0;
+  }
+  .hero > div > *{
+    margin-left: 0;
+  }
   .hero{
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
@@ -364,6 +370,7 @@
     color: inherit;
   }
   .gallery-frame{
+    display: block;
     position: relative;
     overflow: hidden;
     border-radius: 20px;
