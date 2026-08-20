@@ -32,6 +32,7 @@
     font-family: 'IBM Plex Sans', -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
+    overflow-x: hidden;
   }
 
   a{ color: var(--teal-deep); }
@@ -76,7 +77,7 @@
     color: var(--muted);
     letter-spacing: 0.01em;
   }
-  @media (max-width: 520px){
+  @media (max-width: 380px){
     .wordmark .tagline{ display: none; }
   }
   .nav-links{
@@ -330,6 +331,24 @@
   .footer-links a:hover{ color: var(--ink); }
 
   /* Screenshot gallery */
+  .gallery-subhead{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 0 0 16px;
+  }
+  .gallery + .gallery-subhead{
+    margin-top: 44px;
+  }
+  .gallery-ipad{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery-ipad .gallery-frame img{
+    aspect-ratio: 4 / 3;
+    object-position: top center;
+  }
   .gallery{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -365,7 +384,9 @@
   .gallery-frame img{
     display: block;
     width: 100%;
-    height: auto;
+    aspect-ratio: 9 / 19.5;
+    object-fit: cover;
+    object-position: top center;
     border-radius: 20px;
   }
   .gallery-caption{
@@ -494,7 +515,7 @@
       <div class="banner-glow" aria-hidden="true"></div>
       <div class="banner-stack">
         <img class="app-icon-shot" src="uebrig.png" alt="übrig App-Icon">
-        <img class="banner-shot" src="uebrig-banner.png" alt="übrig App-Übersicht">
+        <img class="banner-shot" src="uebersicht_uebrig.PNG" alt="übrig App-Übersicht: Voraussichtlich bis zum Gehalt">
       </div>
     </div>
   </div>
@@ -533,21 +554,42 @@
         <h2>So sieht's auf deinem iPhone oder iPad aus.</h2>
         <p>Vier Screens, ein ruhiger Blick auf dein Geld. Zum Vergrößern antippen.</p>
       </div>
-      <div class="gallery">
-        <a class="gallery-item" href="screen-uebersicht.PNG?v=2" data-caption="Übersicht" aria-label="Screenshot Übersicht vergrößern">
-          <span class="gallery-frame"><img src="screen-uebersicht.PNG?v=2" alt="übrig Screenshot: Monatsübersicht mit verbleibendem Budget"></span>
+      <p class="gallery-subhead">iPhone</p>
+      <div class="gallery gallery-iphone">
+        <a class="gallery-item" href="uebersicht_iphone.PNG" data-caption="Übersicht" aria-label="Screenshot Übersicht vergrößern">
+          <span class="gallery-frame"><img src="uebersicht_iphone.PNG" alt="übrig Screenshot iPhone: Monatsübersicht mit verbleibendem Budget"></span>
           <span class="gallery-caption"><span class="label">Übersicht</span><span class="tag">der Monat</span></span>
         </a>
-        <a class="gallery-item" href="screen-budget.PNG?v=2" data-caption="Budget" aria-label="Screenshot Budget vergrößern">
-          <span class="gallery-frame"><img src="screen-budget.PNG?v=2" alt="übrig Screenshot: Budget-Übersicht mit Kategorien und Fortschrittsbalken"></span>
+        <a class="gallery-item" href="budget_iphone.PNG" data-caption="Budget" aria-label="Screenshot Budget vergrößern">
+          <span class="gallery-frame"><img src="budget_iphone.PNG" alt="übrig Screenshot iPhone: Budget-Übersicht mit Kategorien und Fortschrittsbalken"></span>
           <span class="gallery-caption"><span class="label">Budget</span><span class="tag">nach Kategorie</span></span>
         </a>
-        <a class="gallery-item" href="screen-fixbetraege.PNG?v=2" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge vergrößern">
-          <span class="gallery-frame"><img src="screen-fixbetraege.PNG?v=2" alt="übrig Screenshot: Wiederkehrende Fixbeträge im Überblick"></span>
+        <a class="gallery-item" href="fixbetraege_iphone.PNG" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge vergrößern">
+          <span class="gallery-frame"><img src="fixbetraege_iphone.PNG" alt="übrig Screenshot iPhone: Wiederkehrende Fixbeträge im Überblick"></span>
           <span class="gallery-caption"><span class="label">Fixbeträge</span><span class="tag">wiederkehrend</span></span>
         </a>
-        <a class="gallery-item" href="screen-vermoegen.PNG?v=2" data-caption="Vermögen" aria-label="Screenshot Vermögen vergrößern">
-          <span class="gallery-frame"><img src="screen-vermoegen.PNG?v=2" alt="übrig Screenshot: Vermögensverlauf über die Zeit"></span>
+        <a class="gallery-item" href="vermoegen_iphone.PNG" data-caption="Vermögen" aria-label="Screenshot Vermögen vergrößern">
+          <span class="gallery-frame"><img src="vermoegen_iphone.PNG" alt="übrig Screenshot iPhone: Vermögensverlauf über die Zeit"></span>
+          <span class="gallery-caption"><span class="label">Vermögen</span><span class="tag">im Verlauf</span></span>
+        </a>
+      </div>
+
+      <p class="gallery-subhead">iPad</p>
+      <div class="gallery gallery-ipad">
+        <a class="gallery-item" href="uebersicht_ipad.PNG" data-caption="Übersicht" aria-label="Screenshot Übersicht iPad vergrößern">
+          <span class="gallery-frame"><img src="uebersicht_ipad.PNG" alt="übrig Screenshot iPad: Monatsübersicht mit verbleibendem Budget"></span>
+          <span class="gallery-caption"><span class="label">Übersicht</span><span class="tag">der Monat</span></span>
+        </a>
+        <a class="gallery-item" href="budget_ipad.PNG" data-caption="Budget" aria-label="Screenshot Budget iPad vergrößern">
+          <span class="gallery-frame"><img src="budget_ipad.PNG" alt="übrig Screenshot iPad: Budget-Übersicht mit Kategorien und Fortschrittsbalken"></span>
+          <span class="gallery-caption"><span class="label">Budget</span><span class="tag">nach Kategorie</span></span>
+        </a>
+        <a class="gallery-item" href="fixbeträge_ipad.PNG" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge iPad vergrößern">
+          <span class="gallery-frame"><img src="fixbeträge_ipad.PNG" alt="übrig Screenshot iPad: Wiederkehrende Fixbeträge im Überblick"></span>
+          <span class="gallery-caption"><span class="label">Fixbeträge</span><span class="tag">wiederkehrend</span></span>
+        </a>
+        <a class="gallery-item" href="vermoegen_ipad.PNG" data-caption="Vermögen" aria-label="Screenshot Vermögen iPad vergrößern">
+          <span class="gallery-frame"><img src="vermoegen_ipad.PNG" alt="übrig Screenshot iPad: Vermögensverlauf über die Zeit"></span>
           <span class="gallery-caption"><span class="label">Vermögen</span><span class="tag">im Verlauf</span></span>
         </a>
       </div>
