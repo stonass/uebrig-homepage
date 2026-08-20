@@ -219,6 +219,10 @@
     from{ opacity: 0; transform: rotate(-2.2deg) translateY(14px) scale(.98); }
     to{ opacity: 1; transform: rotate(-2.2deg) translateY(0) scale(1); }
   }
+  @keyframes popIn{
+    from{ opacity: 0; transform: translateY(10px) scale(.97); }
+    to{ opacity: 1; transform: translateY(0) scale(1); }
+  }
   @media (prefers-reduced-motion: reduce){
     .banner-shot, .app-icon-shot{ animation: none; opacity: 1; }
   }
@@ -345,9 +349,8 @@
   .gallery-ipad{
     grid-template-columns: repeat(2, 1fr);
   }
-  .gallery-ipad .gallery-frame img{
-    aspect-ratio: 4 / 3;
-    object-position: top center;
+  .gallery-ipad .gallery-frame{
+    padding-top: 75%;
   }
   .gallery{
     display: grid;
@@ -365,6 +368,7 @@
     overflow: hidden;
     border-radius: 20px;
     background: white;
+    padding-top: 216.7%;
     box-shadow:
       0 1px 3px rgba(20,40,34,0.07),
       0 10px 24px -10px rgba(20,40,34,0.22),
@@ -382,9 +386,12 @@
       0 0 0 1px rgba(14,110,98,0.12);
   }
   .gallery-frame img{
+    position: absolute;
+    top: 0;
+    left: 0;
     display: block;
     width: 100%;
-    aspect-ratio: 9 / 19.5;
+    height: 100%;
     object-fit: cover;
     object-position: top center;
     border-radius: 20px;
@@ -424,12 +431,16 @@
   }
   .lightbox.open{ display: flex; }
   .lightbox img{
-    max-width: min(420px, 90vw);
+    max-width: min(440px, 90vw);
     max-height: 84vh;
     width: auto;
     border-radius: 20px;
     box-shadow: 0 30px 60px -16px rgba(0,0,0,0.5);
-    animation: settle .3s cubic-bezier(.2,.7,.3,1) both;
+    animation: popIn .3s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .lightbox.lightbox-ipad img{
+    max-width: min(880px, 94vw);
+    max-height: 88vh;
   }
   .lightbox-close{
     position: absolute;
@@ -556,19 +567,19 @@
       </div>
       <p class="gallery-subhead">iPhone</p>
       <div class="gallery gallery-iphone">
-        <a class="gallery-item" href="uebersicht_iphone.PNG" data-caption="Übersicht" aria-label="Screenshot Übersicht vergrößern">
+        <a class="gallery-item" data-device="iphone" href="uebersicht_iphone.PNG" data-caption="Übersicht" aria-label="Screenshot Übersicht vergrößern">
           <span class="gallery-frame"><img src="uebersicht_iphone.PNG" alt="übrig Screenshot iPhone: Monatsübersicht mit verbleibendem Budget"></span>
           <span class="gallery-caption"><span class="label">Übersicht</span><span class="tag">der Monat</span></span>
         </a>
-        <a class="gallery-item" href="budget_iphone.PNG" data-caption="Budget" aria-label="Screenshot Budget vergrößern">
+        <a class="gallery-item" data-device="iphone" href="budget_iphone.PNG" data-caption="Budget" aria-label="Screenshot Budget vergrößern">
           <span class="gallery-frame"><img src="budget_iphone.PNG" alt="übrig Screenshot iPhone: Budget-Übersicht mit Kategorien und Fortschrittsbalken"></span>
           <span class="gallery-caption"><span class="label">Budget</span><span class="tag">nach Kategorie</span></span>
         </a>
-        <a class="gallery-item" href="fixbetraege_iphone.PNG" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge vergrößern">
+        <a class="gallery-item" data-device="iphone" href="fixbetraege_iphone.PNG" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge vergrößern">
           <span class="gallery-frame"><img src="fixbetraege_iphone.PNG" alt="übrig Screenshot iPhone: Wiederkehrende Fixbeträge im Überblick"></span>
           <span class="gallery-caption"><span class="label">Fixbeträge</span><span class="tag">wiederkehrend</span></span>
         </a>
-        <a class="gallery-item" href="vermoegen_iphone.PNG" data-caption="Vermögen" aria-label="Screenshot Vermögen vergrößern">
+        <a class="gallery-item" data-device="iphone" href="vermoegen_iphone.PNG" data-caption="Vermögen" aria-label="Screenshot Vermögen vergrößern">
           <span class="gallery-frame"><img src="vermoegen_iphone.PNG" alt="übrig Screenshot iPhone: Vermögensverlauf über die Zeit"></span>
           <span class="gallery-caption"><span class="label">Vermögen</span><span class="tag">im Verlauf</span></span>
         </a>
@@ -576,19 +587,19 @@
 
       <p class="gallery-subhead">iPad</p>
       <div class="gallery gallery-ipad">
-        <a class="gallery-item" href="uebersicht_ipad.PNG" data-caption="Übersicht" aria-label="Screenshot Übersicht iPad vergrößern">
+        <a class="gallery-item" data-device="ipad" href="uebersicht_ipad.PNG" data-caption="Übersicht" aria-label="Screenshot Übersicht iPad vergrößern">
           <span class="gallery-frame"><img src="uebersicht_ipad.PNG" alt="übrig Screenshot iPad: Monatsübersicht mit verbleibendem Budget"></span>
           <span class="gallery-caption"><span class="label">Übersicht</span><span class="tag">der Monat</span></span>
         </a>
-        <a class="gallery-item" href="budget_ipad.PNG" data-caption="Budget" aria-label="Screenshot Budget iPad vergrößern">
+        <a class="gallery-item" data-device="ipad" href="budget_ipad.PNG" data-caption="Budget" aria-label="Screenshot Budget iPad vergrößern">
           <span class="gallery-frame"><img src="budget_ipad.PNG" alt="übrig Screenshot iPad: Budget-Übersicht mit Kategorien und Fortschrittsbalken"></span>
           <span class="gallery-caption"><span class="label">Budget</span><span class="tag">nach Kategorie</span></span>
         </a>
-        <a class="gallery-item" href="fixbeträge_ipad.PNG" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge iPad vergrößern">
-          <span class="gallery-frame"><img src="fixbeträge_ipad.PNG" alt="übrig Screenshot iPad: Wiederkehrende Fixbeträge im Überblick"></span>
+        <a class="gallery-item" data-device="ipad" href="fixbetraege_ipad.PNG?v=2" data-caption="Fixbeträge" aria-label="Screenshot Fixbeträge iPad vergrößern">
+          <span class="gallery-frame"><img src="fixbetraege_ipad.PNG?v=2" alt="übrig Screenshot iPad: Wiederkehrende Fixbeträge im Überblick"></span>
           <span class="gallery-caption"><span class="label">Fixbeträge</span><span class="tag">wiederkehrend</span></span>
         </a>
-        <a class="gallery-item" href="vermoegen_ipad.PNG" data-caption="Vermögen" aria-label="Screenshot Vermögen iPad vergrößern">
+        <a class="gallery-item" data-device="ipad" href="vermoegen_ipad.PNG" data-caption="Vermögen" aria-label="Screenshot Vermögen iPad vergrößern">
           <span class="gallery-frame"><img src="vermoegen_ipad.PNG" alt="übrig Screenshot iPad: Vermögensverlauf über die Zeit"></span>
           <span class="gallery-caption"><span class="label">Vermögen</span><span class="tag">im Verlauf</span></span>
         </a>
@@ -655,9 +666,10 @@
     var closeBtn = document.getElementById('lightboxClose');
     var items = document.querySelectorAll('.gallery-item');
 
-    function open(src, alt){
+    function open(src, alt, device){
       lbImg.src = src;
       lbImg.alt = alt;
+      lb.classList.toggle('lightbox-ipad', device === 'ipad');
       lb.classList.add('open');
       closeBtn.focus();
     }
@@ -670,7 +682,7 @@
       item.addEventListener('click', function(e){
         e.preventDefault();
         var img = item.querySelector('img');
-        open(item.getAttribute('href'), img.alt);
+        open(item.getAttribute('href'), img.alt, item.getAttribute('data-device'));
       });
     });
 
