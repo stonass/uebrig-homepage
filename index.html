@@ -98,13 +98,15 @@
   /* Hero */
   .hero{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 48px;
     align-items: center;
     padding: 72px 0 96px;
   }
+  
+  /* Exakt linksbündige Eyebrow-Zeile mit Bullet-Punkt */
   .eyebrow{
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 8px;
     font-family: 'IBM Plex Mono', monospace;
@@ -112,12 +114,19 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--teal-deep);
-    background: rgba(14,110,98,0.09);
-    padding: 6px 12px;
-    border-radius: 999px;
     margin-bottom: 22px;
-    margin-left: 0; /* Exakt linksbündig */
+    padding: 0;
+    background: transparent;
   }
+  .eyebrow::before{
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--teal-bright);
+  }
+
   h1{
     font-family: 'Fraunces', serif;
     font-weight: 600;
@@ -164,60 +173,50 @@
     font-family: 'IBM Plex Mono', monospace;
   }
 
-  /* Bilder nebeneinander & begradigt */
+  /* Bild-Struktur: Untereinander ohne Überlappung */
   .banner-panel{
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .banner-glow{
     position: absolute;
     inset: -10%;
-    background: radial-gradient(circle at 50% 45%, rgba(63,183,158,0.2), rgba(63,183,158,0) 70%);
+    background: radial-gradient(circle at 50% 45%, rgba(63,183,158,0.22), rgba(63,183,158,0) 70%);
     filter: blur(8px);
     z-index: 0;
   }
-  .banner-row{
+  .banner-stack{
     position: relative;
     z-index: 1;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
     width: 100%;
+    max-width: 440px;
   }
   .app-icon-shot{
-    width: 88px;
-    height: 88px;
-    flex-shrink: 0;
-    border-radius: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
     box-shadow:
       0 2px 6px rgba(20,40,34,0.08),
-      0 14px 28px -8px rgba(20,40,34,0.25),
+      0 12px 24px -6px rgba(20,40,34,0.2),
       0 0 0 1px rgba(20,40,34,0.05);
     transform: none;
-    animation: popIn .8s cubic-bezier(.2,.7,.3,1) both;
   }
   .banner-shot{
     position: relative;
     display: block;
     width: 100%;
-    flex: 1;
     border-radius: 18px;
     box-shadow:
       0 2px 6px rgba(20,40,34,0.08),
       0 18px 36px -10px rgba(20,40,34,0.22),
       0 0 0 1px rgba(20,40,34,0.05);
     transform: none;
-    animation: popIn .8s cubic-bezier(.2,.7,.3,1) 0.1s both;
-  }
-  @keyframes popIn{
-    from{ opacity: 0; transform: translateY(10px) scale(.98); }
-    to{ opacity: 1; transform: translateY(0) scale(1); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .banner-shot, .app-icon-shot{ animation: none; opacity: 1; }
   }
 
   /* Sections */
@@ -225,9 +224,8 @@
   .section-head{
     max-width: 56ch;
     margin-bottom: 44px;
-    text-align: left;
   }
-  .section-head .eyebrow{ margin-bottom: 16px; margin-left: 0; }
+  .section-head .eyebrow{ margin-bottom: 16px; }
   h2{
     font-family: 'Fraunces', serif;
     font-weight: 600;
@@ -278,6 +276,7 @@
   }
   .privacy h2{ color: var(--paper); }
   .privacy p{ color: rgba(246,242,233,0.72); font-size: 16px; }
+  .privacy .eyebrow{ color: var(--teal-bright); }
   .privacy-list{
     list-style: none;
     margin: 0;
@@ -431,7 +430,6 @@
     width: auto;
     border-radius: 20px;
     box-shadow: 0 30px 60px -16px rgba(0,0,0,0.5);
-    animation: popIn .3s cubic-bezier(.2,.7,.3,1) both;
   }
   .lightbox.lightbox-ipad img{
     max-width: min(880px, 94vw);
@@ -468,10 +466,10 @@
   }
 
   @media (max-width: 768px){
-    .hero{ grid-template-columns: 1fr; padding: 48px 0 56px; }
-    .banner-panel{ order: -1; }
-    .banner-row{ justify-content: flex-start; }
-    .app-icon-shot{ width: 68px; height: 68px; border-radius: 16px; }
+    .hero{ grid-template-columns: 1fr; padding: 48px 0 56px; gap: 36px; }
+    .banner-panel{ justify-content: flex-start; }
+    .banner-stack{ align-items: flex-start; max-width: 100%; }
+    .app-icon-shot{ width: 72px; height: 72px; }
     .steps{ grid-template-columns: 1fr; }
     .gallery{ grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
     .privacy{ grid-template-columns: 1fr; padding: 40px 26px; border-radius: 18px; }
@@ -504,7 +502,7 @@
 <main id="top">
   <div class="wrap hero">
     <div>
-      <span class="eyebrow">übrig – Monat im Griff · iPhone und iPad App</span>
+      <div class="eyebrow">übrig – Monat im Griff · iPhone und iPad App</div>
       <h1>Am Ende des Monats zählt,<br><em>was übrig bleibt.</em></h1>
       <p class="lede">übrig zeigt dir auf einen Blick, wie viel Budget dir wirklich noch bleibt – ohne Kontoverbindung, ohne fremde Server. Per Screenshot oder CSV-Import, ausgewertet direkt auf deinem iPhone oder iPad. Entwickelt und getestet mit der ING-App.</p>
       <div class="cta-row">
@@ -518,7 +516,7 @@
 
     <div class="banner-panel">
       <div class="banner-glow" aria-hidden="true"></div>
-      <div class="banner-row">
+      <div class="banner-stack">
         <img class="app-icon-shot" src="uebrig.png" alt="übrig App-Icon">
         <img class="banner-shot" src="uebersicht_uebrig.PNG" alt="übrig App-Übersicht: Voraussichtlich bis zum Gehalt">
       </div>
@@ -528,7 +526,7 @@
   <section id="funktion">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">So funktioniert's</span>
+        <div class="eyebrow">So funktioniert's</div>
         <h2>Kein Banking-Login. Trotzdem den vollen Überblick.</h2>
         <p>übrig verzichtet bewusst auf eine Bankverbindung. Stattdessen liest die App deine Umsätze aus dem, was du ohnehin schon hast.</p>
       </div>
@@ -555,7 +553,7 @@
   <section id="einblick">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Einblick</span>
+        <div class="eyebrow">Einblick</div>
         <h2>So sieht's auf deinem iPhone oder iPad aus.</h2>
         <p>Vier Screens, ein ruhiger Blick auf dein Geld. Zum Vergrößern antippen.</p>
       </div>
@@ -610,7 +608,7 @@
     <div class="wrap">
       <div class="privacy">
         <div>
-          <span class="eyebrow" style="background: rgba(63,183,158,0.16); color: var(--teal-bright);">Privatsphäre</span>
+          <div class="eyebrow">Privatsphäre</div>
           <h2>Deine Daten gehören nur dir.</h2>
           <p>Kein Tracking, keine fremden Server. Wenn du iCloud nutzt, landen deine Daten in deiner eigenen Apple-ID – nie auf externen Servern Dritter. Ohne iCloud-Account bleiben alle Daten lokal auf dem Gerät.</p>
         </div>
