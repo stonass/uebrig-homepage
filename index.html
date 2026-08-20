@@ -116,13 +116,7 @@
     padding: 6px 12px;
     border-radius: 999px;
     margin-bottom: 22px;
-    margin-left: -26px;
-  }
-  .eyebrow::before{
-    content: "";
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--teal-bright);
+    margin-left: -12px;
   }
   h1{
     font-family: 'Fraunces', serif;
@@ -175,7 +169,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px 20px;
+    padding: 20px;
   }
   .banner-glow{
     position: absolute;
@@ -187,16 +181,16 @@
   .banner-stack{
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 24px;
     width: 100%;
   }
   .app-icon-shot{
-    position: absolute;
-    top: -34px;
-    right: -14px;
-    z-index: 2;
-    width: 96px;
-    height: 96px;
-    border-radius: 22px;
+    width: 100px;
+    height: 100px;
+    border-radius: 23px;
     box-shadow:
       0 2px 6px rgba(20,40,34,0.1),
       0 16px 30px -10px rgba(20,40,34,0.35),
@@ -208,8 +202,7 @@
     position: relative;
     display: block;
     width: 100%;
-    max-width: 660px;
-    margin: 0 auto;
+    max-width: 600px;
     border-radius: 22px;
     box-shadow:
       0 2px 6px rgba(20,40,34,0.08),
@@ -479,7 +472,8 @@
   @media (max-width: 720px){
     .hero{ grid-template-columns: 1fr; padding: 48px 0 56px; }
     .banner-panel{ order: -1; }
-    .app-icon-shot{ width: 66px; height: 66px; border-radius: 16px; top: -20px; right: -8px; }
+    .banner-stack{ align-items: center; }
+    .app-icon-shot{ width: 76px; height: 76px; border-radius: 18px; }
     .steps{ grid-template-columns: 1fr; }
     .gallery{ grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
     .privacy{ grid-template-columns: 1fr; padding: 40px 26px; border-radius: 18px; }
