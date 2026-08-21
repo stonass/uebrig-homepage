@@ -204,6 +204,7 @@
     width: 100%;
     max-width: 600px;
     border-radius: 22px;
+    cursor: pointer;
     box-shadow:
       0 2px 6px rgba(20,40,34,0.08),
       0 18px 40px -12px rgba(20,40,34,0.28),
@@ -589,7 +590,7 @@
       <div class="banner-glow" aria-hidden="true"></div>
       <div class="banner-stack">
         <img class="app-icon-shot" src="uebrig.png" alt="übrig – Monat im Griff App-Icon">
-        <img class="banner-shot" src="uebersicht_uebrig.PNG" alt="übrig – Monat im Griff App-Übersicht: Voraussichtlich bis zum Gehalt">
+        <img class="banner-shot" src="uebersicht_uebrig.PNG" alt="übrig – Monat im Griff App-Übersicht: Voraussichtlich bis zum Gehalt" tabindex="0" role="button" aria-label="Bannerbild vergrößern">
       </div>
     </div>
   </div>
@@ -790,6 +791,19 @@
         var isExpanded = storyBox.classList.toggle('expanded');
         storyToggle.setAttribute('aria-expanded', isExpanded);
         storyToggle.textContent = isExpanded ? 'Weniger anzeigen' : 'Weiterlesen';
+      });
+    }
+
+    var bannerShot = document.querySelector('.banner-shot');
+    if(bannerShot){
+      bannerShot.addEventListener('click', function(){
+        open(bannerShot.getAttribute('src'), bannerShot.alt, 'ipad');
+      });
+      bannerShot.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          open(bannerShot.getAttribute('src'), bannerShot.alt, 'ipad');
+        }
       });
     }
   })();
