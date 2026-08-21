@@ -805,6 +805,9 @@
 
     var bannerShot = document.querySelector('.banner-shot');
     if(bannerShot){
+      bannerShot.addEventListener('animationend', function(){
+        bannerShot.style.animation = 'none';
+      });
       bannerShot.addEventListener('click', function(){
         open(bannerShot.getAttribute('src'), bannerShot.alt, 'ipad');
       });
